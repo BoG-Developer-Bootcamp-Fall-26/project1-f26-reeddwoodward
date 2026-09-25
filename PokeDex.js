@@ -34,6 +34,8 @@ async function fetchName(id) {
 
 let pokeNum = 1;
 
+let showInfo = true;
+
 const sprite = document.getElementById("sprite");
 const pokeName = document.getElementById("name");
 const type = document.getElementById("types");
@@ -41,10 +43,11 @@ const type = document.getElementById("types");
 const leftButton = document.getElementById("left");
 const rightButton = document.getElementById("right");
 
+const header = document.getElementById("header");
 const description = document.getElementById("description");
 
 const info = document.getElementById("info");
-const moves = document.getElementById("moves");
+const move = document.getElementById("moves");
 
 const color = {
     normal: "#A8A77A",
@@ -99,27 +102,97 @@ async function update(num) {
 
         type.appendChild(type2);
     }
-    
-    description.textContent = data;
+
+    if (showInfo) {
+        header.textContent = "Info"
+
+        let stats = data.stats;
+
+        let height = data.height / 10;
+        let weight = data.weight / 10;
+        let hp = stats[0]["base_stat"];
+        let att = stats[1]["base_stat"];
+        let def = stats[2]["base_stat"];
+        let spA = stats[3]["base_stat"];
+        let spD = stats[4]["base_stat"];
+        let speed = stats[5]["base_stat"];
+
+        desc = "Height: " + height + "m \n" + 
+                "Weight: " + weight + "kg \n" +
+                "HP: " + hp +
+                "\nAttack: " + att +
+                "\nDefense: " + def +
+                "\n Special Attack: " + spA + 
+                "\n Special Defense: " + spD +
+                "\nSpeed: " + speed;  
+        
+        description.textContent = desc;
+    } else {
+        header.textContent = "Moves"
+
+        let text = ""
+        let arr = data.moves;
+
+        text += arr[0].move.name
+        for( let i=1; i < arr.length; i++) {
+            text += ",\n" +  arr[i].move.name 
+        }
+
+        description.textContent = text;
+    }
 };
 
 update(1);
 
-leftButton.addEventListener("click", async () => {
+leftButton.addEventListener("click", () => {
     pokeNum -= 1;
     if (pokeNum <= 0) {
         pokeNum = 1025;
     }
+
+    leftButton.style.backgroundColor = "rgba(156, 156, 156, 1)";
+
+    setTimeout(() => {
+        leftButton.style.backgroundColor = "rgb(210, 210, 210)";
+    }, 100);
    
     update(pokeNum);
 });
 
-rightButton.addEventListener("click", async () => {
+rightButton.addEventListener("click", () => {
     pokeNum += 1;
     if (pokeNum > 1025) {
         pokeNum = 1;
     }
    
+    update(pokeNum);
+
+    rightButton.style.backgroundColor = "rgba(156, 156, 156, 1)";
+
+    setTimeout(() => {
+        rightButton.style.backgroundColor = "rgb(210, 210, 210)";
+    }, 100);
+});
+
+move.addEventListener("click", () => {
+    setTimeout(() => {
+        move.style.backgroundColor = "rgb(127, 254, 125)";
+    }, 100);
+    move.style.backgroundColor = "rgba(98, 201, 97, 1)";
+    info.style.backgroundColor = "rgb(210, 210, 210)";
+
+    showInfo = false;
+    update(pokeNum);
+});
+
+info.addEventListener("click", () => {
+    setTimeout(() => {
+        info.style.backgroundColor = "rgb(127, 254, 125)";
+    }, 100);
+    info.style.backgroundColor = "rgba(98, 201, 97, 1)";
+    move.style.backgroundColor = "rgb(210, 210, 210)";
+
+    showInfo = true;
     update(pokeNum);
 });
 

@@ -27,7 +27,7 @@ html, body {
     font-size: clamp(1.3rem, 0.5rem + 3vw, 2rem);
     text-decoration: bold;
     font-weight: 650;
-    margin-bottom: 1em;
+    margin-bottom: .5em;
     text-align: center;
 }
 .header2 {
@@ -169,7 +169,8 @@ html, body {
 
 .arrowContainer {
     display: flex; 
-    justify-content: space-around;
+    justify-content: center;
+    gap: 1.5em;
     width: 100%;
     min-height: 0;
 }
@@ -220,22 +221,26 @@ html, body {
     display: flex;
     flex-wrap: wrap;
     flex: 1;
-    width: 90%;
-    max-height: 68%;
+    width: 100%;
+    min-height: 0;
+    max-height: 370px;
     margin-top: .1em;
     background-color: rgb(210, 210, 210);
     padding: 1em 1em;
     box-sizing: border-box;
     overflow-wrap: anywhere;
     font-family: Inter;
-    font-size: clamp(.5rem, 5vw + .3rem, 1.3rem);
+    font-size: clamp(0.7rem, 4vw + .2rem, 1.3rem);
     text-decoration: bold;
+    white-space: pre-line;
+    overflow-y: auto;
+    padding: 1em 1em;
 }
 
 .buttonContainer {
     display: flex; 
     justify-content: center;
-    gap: .9em;
+    gap: 1.5em;
     width: 100%;
     min-height: 0;
     margin-top: auto;
@@ -256,12 +261,17 @@ html, body {
     font-family: Inter;
     font-weight: 400;
     font-size: 1.2rem;
+    cursor: pointer;
+    user-select: none;
 }
 
 @media(max-width: 300px) {
     .button {
         font-size: 1rem;
         width: 50%;
+    }
+    #info {
+        margin-top: 1em;
     }
 }
 

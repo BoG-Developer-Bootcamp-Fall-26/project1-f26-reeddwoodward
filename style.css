@@ -87,7 +87,7 @@ html, body {
     width: 100%;
     max-width: 380px;
     aspect-ratio: 1 / 1;
-    border: .2em;
+    border: .15em;
     border-style: solid;
     box-sizing: border-box;
     background-color: white;
@@ -106,7 +106,7 @@ html, body {
     max-width: 300px;
     min-height: 10%;
     background-color: rgb(210, 210, 210);
-    border: .09em;
+    border: .07em;
     border-radius: 10px;
     border-style: solid;
     box-sizing: border-box;
@@ -132,14 +132,16 @@ html, body {
     font-size: clamp(.5, 0.5rem + 2vw, 1.5rem);
     text-decoration: bold;
     font-weight: 500;
+    font-size: 1rem;
     margin-top: auto;
+    margin-bottom: .5em;
 }
 
 .typeContainer {
     display: flex; 
     justify-content: flex-start;
     width: 100%;
-    margin-bottom: 5%;
+    margin-bottom: 10%;
     gap: .5em;
 
 }
@@ -155,7 +157,6 @@ html, body {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color:coral;
     border-radius: 8px;
     overflow: hidden;
     width: fit-content;
@@ -181,7 +182,7 @@ html, body {
     width: 30%;
     height: 40%;
     min-height: 0;
-    border-radius: 8px;
+    border-radius: 5px;
     padding: .5em 0.5em;
     max-height: 50px;
     cursor: pointer;
@@ -249,7 +250,7 @@ html, body {
     width: 30%;
     height: 40%;
     min-height: 0;
-    border-radius: 8px;
+    border-radius: 5px;
     padding: .63em 0.6em;
     max-height: 50px;
     font-family: Inter;

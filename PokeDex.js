@@ -5,7 +5,7 @@ async function fetchData(id) {
         const response = await fetch (url);
 
         if (!response.ok) {
-            throw new Error("status: " + response.statusText);
+            throw new Error("Result: " + response.statusText)
         }
 
         const data = await response.json();
@@ -13,11 +13,40 @@ async function fetchData(id) {
     } catch (error) {
         console.error(error);
     }
-} 
+};
+let pokeNum = 1;
 
-const data = await fetchData(1);
+const leftButton = document.getElementById("left");
+const rightButton = document.getElementById("right");
 
-if (data) {
-    console.log(data.name);
-    console.log(data.stats[0].base_stat);
-}
+const info = document.getElementById("description");
+
+
+function update(data) {
+    info.textContent = data;
+};
+
+leftButton.addEventListener("click", async () => {
+    pokeNum -= 1;
+    if (pokeNum <= 0) {
+        pokeNum = 1025;
+    }
+    let data = await fetchData(pokeNum);
+    if (!data) {
+        data = "error"
+    }
+    update(data.name);
+});
+
+rightButton.addEventListener("click", async () => {
+    pokeNum += 1;
+    if (pokeNum > 1025) {
+        pokeNum = 1;
+    }
+    let data = await fetchData(pokeNum);
+    if (!data) {
+        data = "error"
+    }
+    update(data.name);
+});
+

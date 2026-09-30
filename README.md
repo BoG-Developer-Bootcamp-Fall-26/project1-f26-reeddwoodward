@@ -14,6 +14,9 @@ In this project, you'll be creating a frontend that graphically displays Pokémo
 - Push all your changes to the remote repository. Make sure that the owner is BoG-Developer-Bootcamp-Fall-26 so that we can see the repository! (if you forgot to do this, you can alternatively message Pattakit on Slack with the link to your repo)
 - **Due Date:** 9/29/26
 
+# Video Walkthrough:
+https://drive.google.com/file/d/1F0XZCxgsJ43OHHTgESAc6TFtRCjrRQAO/view?usp=sharing
+
 ## Requirements
 - Must use HTML, CSS, and JS
 - Must contain the specified frontend elements
